@@ -6,7 +6,9 @@ exports.config = {
     url: 'https://www.etsy.com/',
     msUrl: 'http://localhost:3000/'
   },
-  onPrepare: function() {
-    browser.ignoreSynchronization = true;
+  onPrepare: function () {
+    global.isAngularSite = function (flag) {
+      browser.ignoreSynchronization = !flag;
+    };
   }
 };

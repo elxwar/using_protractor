@@ -1,8 +1,13 @@
 var helper = require('./helper');
 
-describe('Mastered E2E test app', function () {
-  it('should have a mastered title', function () {
+describe('Home : login/register', function () {
+
+  beforeEach(function () {
+    isAngularSite(false);
     browser.get(browser.params.msUrl);
+  });
+
+  it('should have a mastered title', function () {
 
     var title = 'Online talent programs led by fashion industry icons';
 
@@ -10,7 +15,6 @@ describe('Mastered E2E test app', function () {
   });
 
   it('should fail sign in with incorrect password', function () {
-    browser.get(browser.params.msUrl);
 
     var signInIcon = element(by.xpath(".//*[@id='bs-example-navbar-collapse-1']/ul[2]/li/a")),
       signInButton = element(by.xpath(".//*[@id='new_user']/button")),
@@ -22,6 +26,7 @@ describe('Mastered E2E test app', function () {
 
     helper.waitUntilReady(userEmailField);
     userEmailField.sendKeys('test@test.com');
+    helper.waitUntilReady(userPasswordField);
     userPasswordField.sendKeys('password');
 
     signInButton.click();

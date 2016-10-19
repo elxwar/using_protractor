@@ -1,16 +1,20 @@
 var helper = require('./helper');
 
-describe('Protractor demo app', function () {
-  it('should have a title', function () {
+describe('Main page : login/register', function () {
+
+  beforeEach(function () {
+    isAngularSite(false);
     browser.get(browser.params.url);
+  });
+
+  it('should have a title', function () {
 
     var title = 'Etsy :: Your place to buy and sell all things handmade';
 
     expect(browser.getTitle()).toEqual(title);
   });
 
-  it('should sign in', function () {
-    browser.get(browser.params.url);
+  it('should fail sign in and show error for incorrect password', function () {
 
     var signInButton = element(by.id('sign-in')),
       signInLoginForm = element(by.id('signin-button')),
@@ -19,13 +23,20 @@ describe('Protractor demo app', function () {
       passwordExistingError = element(by.id('password-existing-error'));
 
     signInButton.click();
+
     helper.waitUntilReady(usernameField);
     usernameField.sendKeys('test@test.com');
     helper.waitUntilReady(userPasswordField);
     userPasswordField.sendKeys('password');
+
     signInLoginForm.click();
+
     helper.waitUntilReady(passwordExistingError);
     expect(passwordExistingError.getText()).toBe('Password was incorrect.');
 
   });
+
+//  it('should register a new user', function () {
+//
+//  });
 });
