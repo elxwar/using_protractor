@@ -6,6 +6,10 @@ describe('Home : login/register', function () {
     isAngularSite(false);
     browser.get(browser.params.msUrl);
   });
+  
+  afterEach(function () {
+    browser.manage().deleteAllCookies();
+  });
 
   it('should have a mastered title', function () {
 
@@ -25,9 +29,8 @@ describe('Home : login/register', function () {
     signInIcon.click();
 
     helper.waitUntilReady(userEmailField);
-    userEmailField.sendKeys('test@test.com');
-    helper.waitUntilReady(userPasswordField);
-    userPasswordField.sendKeys('password');
+    userEmailField.sendKeys('u1@q.com');
+    userPasswordField.sendKeys('passwords');
 
     signInButton.click();
 

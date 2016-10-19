@@ -7,6 +7,10 @@ describe('Main page : login/register', function () {
     browser.get(browser.params.url);
   });
 
+  afterEach(function () {
+    browser.manage().deleteAllCookies();
+  });
+
   it('should have a title', function () {
 
     var title = 'Etsy :: Your place to buy and sell all things handmade';
@@ -26,7 +30,6 @@ describe('Main page : login/register', function () {
 
     helper.waitUntilReady(usernameField);
     usernameField.sendKeys('test@test.com');
-    helper.waitUntilReady(userPasswordField);
     userPasswordField.sendKeys('password');
 
     signInLoginForm.click();
@@ -36,7 +39,9 @@ describe('Main page : login/register', function () {
 
   });
 
-//  it('should register a new user', function () {
-//
-//  });
+  it('should register a new user', function () {
+    var registerButtonOnMainPage = element(by.id('register'));
+
+    registerButtonOnMainPage.click();
+  });
 });
