@@ -9,7 +9,7 @@ describe('Mastered E2E test app', function () {
     expect(browser.getTitle()).toEqual(title);
   });
 
-  it('should sign in', function () {
+  it('should fail sign in with incorrect password', function () {
     browser.get(browser.params.msUrl);
 
     var signInIcon = element(by.xpath(".//*[@id='bs-example-navbar-collapse-1']/ul[2]/li/a")),
