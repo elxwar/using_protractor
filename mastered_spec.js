@@ -6,7 +6,7 @@ describe('Home : login/register', function () {
     isAngularSite(false);
     browser.get(browser.params.msUrl);
   });
-  
+
   afterEach(function () {
     browser.manage().deleteAllCookies();
   });
